@@ -50,6 +50,7 @@ jobs:
         run: |
           git clone https://${{ secrets.PASSWORD_GIT_CI }}@github.com/washington1995luiz/argocd.git
           cd argocd/apps/services/${{ env.SERVICE_NAME }}/
+          cat deployment.yaml
           cp deployment.yaml deployment.yaml.old
           sed -i "s/image:.*$/image: ${{ env.CONTAINER_IMAGE }}:${{ steps.random_tag.outputs.TAG }}/" deployment.yaml
           git add deployment.yaml.old
