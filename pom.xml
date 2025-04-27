@@ -57,12 +57,17 @@
 						<image>eclipse-temurin:21-jre-alpine</image>
 					</from>
 					<to>
-						<image>sa-saopaulo-1.ocir.io/${env.ORACLE_NAMESPACE}/container-with-jib:${env.TAG}</image>
+						<image>docker.io/washington1995luiz/container-with-jib:${env.TAG}</image>
 						<auth>
-							<username>${env.ORACLE_USERNAME}</username>
-							<password>${env.ORACLE_PASSWORD}</password>
 						</auth>
 					</to>
+<!--					<to>-->
+<!--						<image>sa-saopaulo-1.ocir.io/${env.ORACLE_NAMESPACE}/container-with-jib:${env.TAG}</image>-->
+<!--						<auth>-->
+<!--							<username>${env.ORACLE_USERNAME}</username>-->
+<!--							<password>${env.ORACLE_PASSWORD}</password>-->
+<!--						</auth>-->
+<!--					</to>-->
 				</configuration>
 			</plugin>
 		</plugins>
