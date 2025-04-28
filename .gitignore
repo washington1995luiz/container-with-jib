@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 mvnw
 mvnw.cmd
-
+command-kubectl.text
 
 ### STS ###
 .apt_generated
