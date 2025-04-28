@@ -56,21 +56,52 @@
 					<from>
 						<image>eclipse-temurin:21-jre-alpine</image>
 					</from>
-					<to>
-						<image>docker.io/washington1995luiz/container-with-jib:${env.TAG}</image>
-						<auth>
-						</auth>
-					</to>
-<!--					<to>-->
-<!--						<image>sa-saopaulo-1.ocir.io/${env.ORACLE_NAMESPACE}/container-with-jib:${env.TAG}</image>-->
-<!--						<auth>-->
-<!--							<username>${env.ORACLE_USERNAME}</username>-->
-<!--							<password>${env.ORACLE_PASSWORD}</password>-->
-<!--						</auth>-->
-<!--					</to>-->
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>dockerhub</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.4.5</version>
+						<configuration>
+							<to>
+								<image>docker.io/washington1995luiz/container-with-jib:${env.TAG}</image>
+							</to>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>ocir</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.4.5</version>
+						<configuration>
+							<to>
+								<image>sa-saopaulo-1.ocir.io/${env.ORACLE_NAMESPACE}/container-with-jib:${env.TAG}</image>
+								<auth>
+									<username>${env.ORACLE_USERNAME}</username>
+									<password>${env.ORACLE_PASSWORD}</password>
+								</auth>
+							</to>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
 
 </project>

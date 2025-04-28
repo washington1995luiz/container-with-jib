@@ -41,7 +41,7 @@ jobs:
         run: echo "TAG=$(echo ${GITHUB_SHA::4})" >> $GITHUB_OUTPUT
 
       - name: Build container with Google plugin jib
-        run: mvn compile jib:build
+        run: mvn compile jib:build -Pocir
         env:
           ORACLE_NAMESPACE: ${{ secrets.ORACLE_NAMESPACE }}
           ORACLE_USERNAME: ${{ secrets.ORACLE_USERNAME }}
