@@ -1,15 +1,14 @@
-name: Application CI/CD
+name: Application CI/CD - OCIR
 
 on:
   workflow_dispatch:
-
 #  push:
 #    branches:
 #      - '*'
 #      - '!master'
 #      - '!main'
-#  pull_request:
-#    types: [closed]
+  pull_request:
+    types: [closed]
 
 jobs:
   deploy:
