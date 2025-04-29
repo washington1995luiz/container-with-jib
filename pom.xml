@@ -101,7 +101,23 @@
 				</plugins>
 			</build>
 		</profile>
-
+		<profile>
+			<id>gcp</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.4.5</version>
+						<configuration>
+							<to>
+								<image>${env.GCP_CONTAINER}:${env.TAG}</image>
+							</to>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 
 </project>
