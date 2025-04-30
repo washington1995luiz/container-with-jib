@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping
     public String home(){
-        return "Creating container using Google JIB plugin.";
+        return "Last update: 04/30/2025";
     }
 }
