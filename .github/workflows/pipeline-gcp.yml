@@ -7,18 +7,22 @@ on:
 #      - '*'
 #      - '!master'
 #      - '!main'
-  pull_request:
-    types: [closed]
+#  pull_request:
+#    types: [closed]
 
 jobs:
   deploy:
     name: "[DEV] - Deploy"
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+#    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
 
     env:
       SERVICE_NAME: "container-with-jib"
       CONTAINER_IMAGE: "gru.ocir.io/grngg3tmknzq/container-with-jib"
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
       - name: Checkout repository
@@ -45,7 +49,6 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           project_id: '${{ secrets.GCP_PROJECT_ID }}'
-          allow-docker-auth: true
 
       - name: Generate random tag
         id: random_tag

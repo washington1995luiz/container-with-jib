@@ -1,4 +1,4 @@
-name: Application CI/CD - OCIR
+name: Application CI/CD - OCIR BY COMMANDS
 
 on:
   workflow_dispatch:
@@ -40,12 +40,10 @@ jobs:
         run: echo "TAG=$(echo ${GITHUB_SHA::4})" >> $GITHUB_OUTPUT
 
       - name: Build container with Google plugin jib
-        run: mvn compile jib:build -Pocir
-        env:
-          ORACLE_NAMESPACE: ${{ secrets.ORACLE_NAMESPACE }}
-          ORACLE_USERNAME: ${{ secrets.ORACLE_USERNAME }}
-          ORACLE_PASSWORD: ${{ secrets.ORACLE_PASSWORD }}
-          TAG: ${{ steps.random_tag.outputs.TAG }}
+        run: mvn compile com.google.cloud.tools:jib-maven-plugin:3.4.5:build \
+          -D"jib.to.image=sa-saopaulo-1.ocir.io/${{ secrets.ORACLE_NAMESPACE }}/container-with-jib:${{ steps.random_tag.outputs.TAG }}" \
+          -D"jib.to.auth.username=${{ secrets.ORACLE_USERNAME }}" \
+          -D"jib.to.auth.password=${{ secrets.ORACLE_PASSWORD }}"
 
       - name: Argocd - Update Deployment Configuration
         run: |
