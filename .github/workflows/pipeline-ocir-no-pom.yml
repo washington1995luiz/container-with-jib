@@ -1,4 +1,4 @@
-name: Application CI/CD - OCIR
+name: Application CI/CD - OCIR BY COMMANDS
 
 on:
   workflow_dispatch:
