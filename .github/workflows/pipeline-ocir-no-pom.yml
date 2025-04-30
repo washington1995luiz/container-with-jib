@@ -41,9 +41,9 @@ jobs:
 
       - name: Build container with Google plugin jib
         run: mvn compile com.google.cloud.tools:jib-maven-plugin:3.4.5:build \
-          -D"jib.to.image=sa-saopaulo-1.ocir.io/${{ secrets.ORACLE_NAMESPACE }}/container-with-jib:${{ steps.random_tag.outputs.TAG }}" \
-          -D"jib.to.auth.username=${{ secrets.ORACLE_USERNAME }}" \
-          -D"jib.to.auth.password=${{ secrets.ORACLE_PASSWORD }}"
+          -Djib.to.image=sa-saopaulo-1.ocir.io/${{ secrets.ORACLE_NAMESPACE }}/container-with-jib:${{ steps.random_tag.outputs.TAG }} \
+          -Djib.to.auth.username=${{ secrets.ORACLE_USERNAME }} \
+          -Djib.to.auth.password=${{ secrets.ORACLE_PASSWORD }}
 
       - name: Argocd - Update Deployment Configuration
         run: |
