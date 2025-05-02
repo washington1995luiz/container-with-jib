@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping
     public String home(){
-        return "Last update: 04/30/2025";
+        return "Last update: 05/02/2025";
     }
 }

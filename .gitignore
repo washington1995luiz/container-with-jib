@@ -6,6 +6,7 @@ target/
 mvnw
 mvnw.cmd
 command-kubectl.text
+jib
 
 ### STS ###
 .apt_generated
