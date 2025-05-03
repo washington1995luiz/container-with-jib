@@ -54,8 +54,8 @@
 				<version>3.4.5</version>
 				<configuration>
 					<from>
-<!--						<image>eclipse-temurin:21-jre-alpine</image>-->
-						<image>maven:3.9.4-amazoncorretto-21</image>
+						<image>eclipse-temurin:21-jre-alpine</image>
+<!--						<image>maven:3.9.4-amazoncorretto-21</image>-->
 					</from>
 				</configuration>
 			</plugin>
