@@ -4,18 +4,11 @@ spring:
   cloud:
     kubernetes:
       secrets:
-        name: container-with-jib-secret
         namespace: container-with-jib
-        sources:
-          - name: server_port
-          - name: value
+        name: container-with-jib-secret
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: polling # Or 'event' if you set up the webhook
-        period: 5s # Polling interval in milliseconds (e.g., 5 seconds)
-        strategy: refresh # Or 'restart_context', 'shutdown'
-        monitoring-secrets: true
-
+value: ${VALUE}
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
