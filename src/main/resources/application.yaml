@@ -2,5 +2,32 @@ spring:
   application:
     name: container-with-jib
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health, prometheus"
+    access:
+      default: unrestricted
+  endpoint:
+    health:
+      show-details: always
+      access: unrestricted
+    prometheus:
+      access: unrestricted
 server:
-  port: ${SERVER_PORT:80}
+  port: ${SERVER_PORT:8009}
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+    min-response-size: 1024
+
+value: ${VALUE:default-value}
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      Test:
+        minimum-number-of-calls: 4
+        sliding-window-size: 8

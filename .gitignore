@@ -7,6 +7,7 @@ mvnw
 mvnw.cmd
 command-kubectl.text
 jib
+docker
 
 ### STS ###
 .apt_generated
