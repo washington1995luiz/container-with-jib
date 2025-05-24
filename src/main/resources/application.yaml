@@ -14,7 +14,10 @@ spring:
         mode: polling # Or 'event' if you set up the webhook
         period: 5000 # Polling interval in milliseconds (e.g., 5 seconds)
         strategy: refresh # Or 'restart_context', 'shutdown'
-
+logging:
+  level:
+    org.springframework.cloud.kubernetes: DEBUG
+    org.springframework.cloud.context.refresh: DEBUG # For refresh scope events
 management:
   endpoints:
     web:
