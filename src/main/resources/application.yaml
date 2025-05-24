@@ -9,6 +9,11 @@ spring:
         sources:
           - name: server_port
           - name: value
+      reload: # This is the section for dynamic reloading
+        enabled: true
+        mode: polling # Or 'event' if you set up the webhook
+        period: 5000 # Polling interval in milliseconds (e.g., 5 seconds)
+        strategy: refresh # Or 'restart_context', 'shutdown'
 
 management:
   endpoints:
