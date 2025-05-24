@@ -1,6 +1,7 @@
 package br.com.washington.container_with_jib.conteroller;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,11 @@ public class HomeController {
 
     @Value("${value:default}")
     private String value;
+
+    @PostConstruct
+    protected void init(){
+        log.info("Value: {}", value);
+    }
 
     @CircuitBreaker(name = "Test", fallbackMethod = "fallbackCircuitBreak")
     @GetMapping("/test")
