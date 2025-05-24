@@ -8,11 +8,13 @@ spring:
       secrets:
         namespace: container-with-jib
         enabled: true
-        sources:
-          - name: container-with-jib-secret
+        name: container-with-jib-secret
       reload: # This is the section for dynamic reloading
         enabled: true
+        mode: polling
+        period: 5000
         strategy: refresh
+
 #value: ${VALUE}
 logging:
   level:
