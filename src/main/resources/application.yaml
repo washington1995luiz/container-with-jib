@@ -3,12 +3,17 @@ spring:
     name: container-with-jib
   cloud:
     kubernetes:
+      config:
+        enabled: false
       secrets:
         namespace: container-with-jib
-        name: container-with-jib-secret
+        enabled: true
+        sources:
+          - name: container-with-jib-secret
       reload: # This is the section for dynamic reloading
         enabled: true
-value: ${VALUE}
+        strategy: refresh
+#value: ${VALUE}
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
@@ -17,17 +22,19 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health, prometheus"
+        include: "refresh, health, prometheus"
     access:
       default: unrestricted
   endpoint:
+    refresh:
+      access: unrestricted
     health:
       show-details: always
       access: unrestricted
     prometheus:
       access: unrestricted
 server:
-  port: ${SERVER_PORT:8009}
+  port: ${server_port:80}
   compression:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/plain
