@@ -8,18 +8,20 @@ spring:
       secrets:
         namespace: container-with-jib
         enabled: true
-        name: container-with-jib-secret
+        sources:
+          - name: container-with-jib-secret
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: polling
-        period: 5000
+        mode: event
         strategy: refresh
 
 #value: ${VALUE}
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
-    org.springframework.cloud.context.refresh: DEBUG # For refresh scope events
+    org.springframework.cloud.kubernetes.client: DEBUG
+    org.springframework.cloud.kubernetes.client.config: DEBUG
+    org.springframework.cloud.kubernetes.client.secrets: DEBUG
 management:
   endpoints:
     web:
