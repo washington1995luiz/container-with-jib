@@ -16,7 +16,7 @@ public class HomeController {
 
     private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
-    @Value("${value}")
+    @Value("${value:default}")
     private String value;
 
     @CircuitBreaker(name = "Test", fallbackMethod = "fallbackCircuitBreak")

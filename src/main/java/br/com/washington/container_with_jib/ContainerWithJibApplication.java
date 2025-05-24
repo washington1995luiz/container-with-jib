@@ -3,6 +3,7 @@ package br.com.washington.container_with_jib;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class ContainerWithJibApplication {
 

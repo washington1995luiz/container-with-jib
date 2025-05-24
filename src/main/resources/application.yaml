@@ -1,6 +1,14 @@
 spring:
   application:
     name: container-with-jib
+  cloud:
+    kubernetes:
+      secrets:
+        name: container-with-jib-secret
+        namespace: container-with-jib
+        sources:
+          - name: server_port
+          - name: value
 
 management:
   endpoints:
@@ -21,8 +29,6 @@ server:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/plain
     min-response-size: 1024
-
-value: ${VALUE:default-value}
 
 
 resilience4j:
