@@ -31,10 +31,12 @@ public class HomeController {
 
     @PostConstruct
     protected void init(){
-        log.info("Value 1: {}", Path.of("src\\main\\resource\\value").toAbsolutePath());
-        log.info("Value: 2{}", Path.of("resource\\secrets\\value").toAbsolutePath());
-        if(Path.of("resource\\secrets\\value").toFile().exists()) {
-            File file = Path.of("resource\\secrets\\value").toFile();
+
+        log.info("Value: 2{}", Path.of("resources\\secrets\\value").toAbsolutePath());
+        log.info("vv: {}", Path.of("resources\\secrets\\value").toAbsolutePath().toFile().exists());
+        if(Path.of("resources\\secrets\\value").toAbsolutePath().toFile().exists()) {
+            log.info("Exist ");
+            File file = new File(Path.of("resources\\secrets\\value").toAbsolutePath().toUri());
 
             try (Scanner scanner = new Scanner(file)) {
                 log.info("Value: {}", scanner.nextLine());
