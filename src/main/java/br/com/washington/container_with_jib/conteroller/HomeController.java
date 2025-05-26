@@ -13,7 +13,12 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Scanner;
 
 @RefreshScope
 @RestController
@@ -26,7 +31,25 @@ public class HomeController {
 
     @PostConstruct
     protected void init(){
-        log.info("Value: {}", value);
+        log.info("Value 1: {}", Path.of("src\\main\\resource\\value").toAbsolutePath());
+        log.info("Value: 2{}", Path.of("resource\\secrets\\value").toAbsolutePath());
+        if(Path.of("resource\\secrets\\value").toFile().exists()) {
+            File file = Path.of("resource\\secrets\\value").toFile();
+
+            try (Scanner scanner = new Scanner(file)) {
+                log.info("Value: {}", scanner.nextLine());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+//        File file = Path.of("C:\\projects\\container-with-jib\\src\\main\\resources\\value").toFile();
+
+//        try(Scanner scanner = new Scanner(file)) {
+//            log.info("Value: {}", scanner.nextLine());
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+
     }
 
     @CircuitBreaker(name = "Test", fallbackMethod = "fallbackCircuitBreak")

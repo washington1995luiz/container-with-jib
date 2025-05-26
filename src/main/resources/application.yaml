@@ -20,7 +20,7 @@ spring:
         period: 5000ms
         strategy: refresh
 
-value: ${classpath:/secrets/value}
+value: ${classpath:value}
 
 logging:
   level:
