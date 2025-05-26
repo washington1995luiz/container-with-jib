@@ -5,15 +5,20 @@ spring:
     kubernetes:
       config:
         enabled: false
+        paths: /etc/config
       secrets:
         namespace: container-with-jib
         enabled: true
         sources:
           - name: container-with-jib-secret
+        paths: /etc/config
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: event
+        mode: polling
         strategy: refresh
+        monitoring-secrets: true
+        namespaces: container-with-jib
+        period: 5000ms
 
 #value: ${VALUE}
 logging:
