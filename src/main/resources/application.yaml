@@ -15,10 +15,10 @@ spring:
       reload: # This is the section for dynamic reloading
         enabled: true
         mode: polling
-        strategy: refresh
         monitoring-secrets: true
         namespaces: container-with-jib
         period: 5000ms
+        strategy: restart_context
 
 #value: ${VALUE}
 logging:
@@ -35,6 +35,8 @@ management:
     access:
       default: unrestricted
   endpoint:
+    restart:
+      access: unrestricted
     refresh:
       access: unrestricted
     health:
@@ -44,6 +46,8 @@ management:
         enabled: true
     prometheus:
       access: unrestricted
+    resume:
+      enabled: true
 server:
   port: ${server_port:80}
   compression:
