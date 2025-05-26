@@ -20,7 +20,8 @@ spring:
         period: 5000ms
         strategy: refresh
 
-value: classpath:/etc/config/value
+value: /etc/config/value
+
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
