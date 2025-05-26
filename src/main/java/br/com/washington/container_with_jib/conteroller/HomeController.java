@@ -29,28 +29,20 @@ public class HomeController {
     @Value("${value:default}")
     private String value;
 
+    private String att;
+
     @PostConstruct
     protected void init(){
         Path path = Path.of("/app/resources/secrets/value");
-        log.info("Value: 2{}", path.toAbsolutePath());
-        log.info("vv: {}", path.toAbsolutePath().toFile().exists());
         if(path.toAbsolutePath().toFile().exists()) {
-            log.info("Exist ");
             File file = new File(path.toAbsolutePath().toUri());
-
             try (Scanner scanner = new Scanner(file)) {
-                log.info("Value: {}", scanner.nextLine());
+                att = scanner.nextLine();
+                log.info("Value: {}", att);
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
-//        File file = Path.of("C:\\projects\\container-with-jib\\src\\main\\resources\\value").toFile();
-
-//        try(Scanner scanner = new Scanner(file)) {
-//            log.info("Value: {}", scanner.nextLine());
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
 
     }
 
@@ -63,7 +55,7 @@ public class HomeController {
 
     @GetMapping
     public String home(){
-        return value;
+        return att;
     }
 
     private String fallbackCircuitBreak(RuntimeException e){
