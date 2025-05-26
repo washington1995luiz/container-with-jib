@@ -40,6 +40,8 @@ management:
     health:
       show-details: always
       access: unrestricted
+      probes:
+        enabled: true
     prometheus:
       access: unrestricted
 server:
