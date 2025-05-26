@@ -20,7 +20,7 @@ spring:
         period: 5000ms
         strategy: refresh
 
-value: /etc/config/value
+value: ${file:/etc/config/value}
 
 logging:
   level:
