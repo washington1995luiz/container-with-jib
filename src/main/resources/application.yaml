@@ -18,7 +18,7 @@ spring:
         monitoring-secrets: true
         namespaces: container-with-jib
         period: 5000ms
-        strategy: refresh
+        strategy: restart_context
 
 #value: ${VALUE}
 logging:
@@ -31,7 +31,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "refresh, health, prometheus"
+        include: "refresh, health, prometheus, restart"
     access:
       default: unrestricted
   endpoint:
