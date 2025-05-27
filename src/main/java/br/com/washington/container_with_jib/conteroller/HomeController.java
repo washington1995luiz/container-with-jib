@@ -33,16 +33,17 @@ public class HomeController {
 
     @PostConstruct
     protected void init(){
-        Path path = Path.of("/app/resources/secrets/value");
-        if(path.toAbsolutePath().toFile().exists()) {
-            File file = new File(path.toAbsolutePath().toUri());
-            try (Scanner scanner = new Scanner(file)) {
-                att = scanner.nextLine();
-                log.info("Value: {}", att);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        log.info(value);
+//        Path path = Path.of("/app/resources/secrets/value");
+//        if(path.toAbsolutePath().toFile().exists()) {
+//            File file = new File(path.toAbsolutePath().toUri());
+//            try (Scanner scanner = new Scanner(file)) {
+//                att = scanner.nextLine();
+//                log.info("Value: {}", att);
+//            } catch (FileNotFoundException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
 
     }
 
