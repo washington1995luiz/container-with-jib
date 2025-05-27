@@ -1,14 +1,16 @@
 package br.com.washington.container_with_jib;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 @RefreshScope
-@ConfigurationProperties(prefix = "my.secret")
 @Component
 public class MySecretProps {
+    @Value("${server_port}")
     private String serverPort;
+    @Value("${value}")
     private String value;
     // getters and setters
     public String getServerPort() {
