@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 @Component
 public class MySecretProps {
-    @Value("${server_port}")
+    @Value("${server_port:80}")
     private String serverPort;
-    @Value("${value}")
+    @Value("${value:default}")
     private String value;
     // getters and setters
     public String getServerPort() {

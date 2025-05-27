@@ -1,6 +1,8 @@
 spring:
   application:
     name: container-with-jib
+  config:
+    import: optional:configtree:/app/secrets
   cloud:
     kubernetes:
       secrets:
@@ -13,11 +15,12 @@ spring:
         strategy: refresh
         period: 5000
 
-my:
-  secret:
-    server-port: ${file:/app/resources/secrets/server_port}
-#    value: ${classpath:/src/main/resources/secrets/value}
-    value: ${file:/app/resources/secrets/value}
+#value: ${file:value}
+#my:
+#  secret:
+#    server-port: ${file:/app/resources/secrets/server_port}
+#    value: "file:/src/main/resources/secrets/value"
+##    value: ${file:/app/resources/secrets/value}
 
 logging:
   level:
