@@ -6,7 +6,6 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.actuate.info.ProcessInfoContributor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +27,9 @@ public class HomeController {
     private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
     private final MySecretProps mySecretProps;
-    private final ProcessInfoContributor processInfoContributor;
 
-    public HomeController(MySecretProps mySecretProps, ProcessInfoContributor processInfoContributor) {
+    public HomeController(MySecretProps mySecretProps) {
         this.mySecretProps = mySecretProps;
-        this.processInfoContributor = processInfoContributor;
     }
 
     @Value("${value:default}")
