@@ -1,10 +1,12 @@
 package br.com.washington.container_with_jib.conteroller;
 
+import br.com.washington.container_with_jib.MySecretProps;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.info.ProcessInfoContributor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +22,18 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
-@RefreshScope
 @RestController
 public class HomeController {
 
     private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+
+    private final MySecretProps mySecretProps;
+    private final ProcessInfoContributor processInfoContributor;
+
+    public HomeController(MySecretProps mySecretProps, ProcessInfoContributor processInfoContributor) {
+        this.mySecretProps = mySecretProps;
+        this.processInfoContributor = processInfoContributor;
+    }
 
     @Value("${value:default}")
     private String value;
@@ -56,7 +65,7 @@ public class HomeController {
 
     @GetMapping
     public String home(){
-        return value;
+        return mySecretProps.getValue();
     }
 
     private String fallbackCircuitBreak(RuntimeException e){

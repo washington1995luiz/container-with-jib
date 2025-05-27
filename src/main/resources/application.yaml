@@ -13,9 +13,14 @@ spring:
         namespaces: container-with-jib
         strategy: refresh
 
+my:
+  secret:
+    server-port: ${file:/app/resources/secrets/server_port}
+    value: ${file:/app/resources/secrets/value}
 
 logging:
   level:
+    org.springframework.cloud.health.RefreshScopeHealthIndicator: DEBUG
     org.springframework.cloud.kubernetes: DEBUG
     org.springframework.cloud.kubernetes.client: DEBUG
     org.springframework.cloud.kubernetes.client.config: DEBUG
