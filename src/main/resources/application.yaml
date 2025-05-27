@@ -3,26 +3,17 @@ spring:
     name: container-with-jib
   cloud:
     kubernetes:
-      config:
-        enabled: true
-        paths: /app/resources/secrets
       secrets:
         enabled: true
-        paths: /app/resources/secrets/value
-        sources:
-          - name: /app/resources/secrets/value
-      #        namespace: container-with-jib
-#        sources:
-#          - name: container-with-jib-secret
+        paths: /app/resources/secrets
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: polling
+        mode: event
         monitoring-secrets: true
         namespaces: container-with-jib
-        period: 5000ms
         strategy: refresh
 
-#value: ${classpath:value}
+value: ${value:default}
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
