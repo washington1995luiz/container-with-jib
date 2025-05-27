@@ -5,13 +5,13 @@ spring:
     kubernetes:
       secrets:
         enabled: true
-        paths: /app/resources/secrets
+        paths: /app/secrets
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: event
+        mode: polling
         monitoring-secrets: true
-        namespaces: container-with-jib
         strategy: refresh
+        period: 5000
 
 my:
   secret:
