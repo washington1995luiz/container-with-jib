@@ -2,12 +2,12 @@ spring:
   application:
     name: container-with-jib
   config:
-    import: optional:configtree:/app/secrets
+    import: optional:configtree:/app/secrets/
   cloud:
     kubernetes:
       secrets:
         enabled: true
-        paths: /app/secrets
+        paths: /app/secrets/
       reload: # This is the section for dynamic reloading
         enabled: true
         mode: polling
