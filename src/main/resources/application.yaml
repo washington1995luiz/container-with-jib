@@ -7,19 +7,14 @@ spring:
     kubernetes:
       secrets:
         enabled: true
-        paths: /app/secrets/
+        paths: optional:configtree:/app/secrets/
       reload: # This is the section for dynamic reloading
         enabled: true
         mode: event
         monitoring-secrets: true
         strategy: refresh
 
-#value: ${file:value}
-#my:
-#  secret:
-#    server-port: ${file:/app/resources/secrets/server_port}
-#    value: "file:/src/main/resources/secrets/value"
-##    value: ${file:/app/resources/secrets/value}
+
 
 logging:
   level:
