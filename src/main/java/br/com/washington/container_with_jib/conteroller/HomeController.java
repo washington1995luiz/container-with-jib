@@ -56,7 +56,7 @@ public class HomeController {
 
     @GetMapping
     public String home(){
-        return att;
+        return value;
     }
 
     private String fallbackCircuitBreak(RuntimeException e){

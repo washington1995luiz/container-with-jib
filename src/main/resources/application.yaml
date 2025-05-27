@@ -13,7 +13,7 @@ spring:
         namespaces: container-with-jib
         strategy: refresh
 
-value: ${value:default}
+
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
