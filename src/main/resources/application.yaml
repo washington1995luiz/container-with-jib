@@ -10,10 +10,9 @@ spring:
         paths: /app/secrets/
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: polling
+        mode: event
         monitoring-secrets: true
         strategy: refresh
-        period: 5000
 
 #value: ${file:value}
 #my:
