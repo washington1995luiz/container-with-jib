@@ -8,14 +8,13 @@ spring:
       secrets:
         enabled: true
         paths: /app/secrets/
+        namespace: container-with-jib
+        name: container-with-jib-secret
       reload: # This is the section for dynamic reloading
         enabled: true
-        mode: polling
+        mode: event
         monitoring-secrets: true
         strategy: refresh
-        period: 10000ms
-
-
 
 logging:
   level:
