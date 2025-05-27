@@ -1,8 +1,6 @@
 spring:
   application:
     name: container-with-jib
-  config:
-    import: /app/resources/secrets
   cloud:
     kubernetes:
       config:
@@ -10,9 +8,9 @@ spring:
         paths: /app/resources/secrets
       secrets:
         enabled: true
-        paths: /app/resources/secrets
+        paths: /app/resources/secrets/value
         sources:
-          - name: value
+          - name: /app/resources/secrets/value
       #        namespace: container-with-jib
 #        sources:
 #          - name: container-with-jib-secret
@@ -25,7 +23,6 @@ spring:
         strategy: refresh
 
 #value: ${classpath:value}
-
 logging:
   level:
     org.springframework.cloud.kubernetes: DEBUG
