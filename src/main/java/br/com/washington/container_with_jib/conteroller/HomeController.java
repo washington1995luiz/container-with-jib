@@ -41,17 +41,6 @@ public class HomeController {
     @PostConstruct
     protected void init(){
         log.info(value);
-//        Path path = Path.of("/app/resources/secrets/value");
-//        if(path.toAbsolutePath().toFile().exists()) {
-//            File file = new File(path.toAbsolutePath().toUri());
-//            try (Scanner scanner = new Scanner(file)) {
-//                att = scanner.nextLine();
-//                log.info("Value: {}", att);
-//            } catch (FileNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-
     }
 
     @CircuitBreaker(name = "Test", fallbackMethod = "fallbackCircuitBreak")
