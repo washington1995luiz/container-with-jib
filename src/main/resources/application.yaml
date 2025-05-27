@@ -15,7 +15,7 @@ spring:
 
 my:
   secret:
-    server-port: ${file:/app/resources/secrets/server_port}
+    serverPort: ${file:/app/resources/secrets/server_port}
     value: ${file:/app/resources/secrets/value}
 
 logging:
