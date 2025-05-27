@@ -7,7 +7,7 @@ spring:
     kubernetes:
       secrets:
         enabled: true
-        paths: optional:configtree:/app/secrets/
+        paths: /app/secrets/
       reload: # This is the section for dynamic reloading
         enabled: true
         mode: event
