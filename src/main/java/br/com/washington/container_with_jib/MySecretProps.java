@@ -18,4 +18,12 @@ public class MySecretProps {
     public String getValue() {
         return value;
     }
+
+    public void setServerPort(String serverPort) {
+        this.serverPort = serverPort;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

@@ -1,6 +1,7 @@
 package br.com.washington.container_with_jib.conteroller;
 
 import br.com.washington.container_with_jib.MySecretProps;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
